@@ -52,17 +52,5 @@ service cloud.firestore {
 }
 ```
 
-## Suggested Commit Plan
-1. `setup: create flutter app and add firebase packages`
-2. `firebase: configure firebase and initialize app`
-3. `model: add task model with toMap fromMap and copyWith`
-4. `service: add firestore task service`
-5. `ui: add main task list screen`
-6. `feature: add nested subtasks`
-7. `feature: add search and priority tags`
-8. `polish: add loading empty error states and theme toggle`
 
-## Known Limitations
-- No Firebase Authentication yet
-- All users share the same `tasks` collection in development mode
-- No due dates or reminders yet
+
