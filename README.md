@@ -1,16 +1,68 @@
-# cw03
+# CSC 4360 CW-03 — Level Up Life
 
-A new Flutter project.
+This project is a Flutter + Firebase Firestore task management app built for the CSC 4360 CRUD assignment.
 
-## Getting Started
+## Features
+- Create tasks
+- Real-time task stream with Firestore
+- Toggle task completion
+- Delete tasks
+- Nested subtasks
+- Search/filter tasks and subtasks
+- Priority tags
+- Dark/light theme toggle
+- Progress tracker and simple XP/level display
 
-This project is a starting point for a Flutter application.
+## Folder Structure
+- `lib/models/` → Task model
+- `lib/services/` → Firestore service
+- `lib/screens/` → main screen
+- `lib/widgets/` → reusable task card widget
 
-A few resources to get you started if this is your first Flutter project:
+## Setup
+1. Create a Flutter project or use this one.
+2. Run:
+   - `flutter pub get`
+3. Configure Firebase:
+   - `flutterfire configure`
+4. Make sure `lib/firebase_options.dart` exists.
+5. In Firebase console, enable Firestore in test mode.
+6. Run:
+   - `flutter run`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Build APK
+```bash
+flutter build apk
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+APK output:
+```bash
+build/app/outputs/flutter-apk/app-release.apk
+```
+
+## Firestore Rules for Development
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+```
+
+## Suggested Commit Plan
+1. `setup: create flutter app and add firebase packages`
+2. `firebase: configure firebase and initialize app`
+3. `model: add task model with toMap fromMap and copyWith`
+4. `service: add firestore task service`
+5. `ui: add main task list screen`
+6. `feature: add nested subtasks`
+7. `feature: add search and priority tags`
+8. `polish: add loading empty error states and theme toggle`
+
+## Known Limitations
+- No Firebase Authentication yet
+- All users share the same `tasks` collection in development mode
+- No due dates or reminders yet
